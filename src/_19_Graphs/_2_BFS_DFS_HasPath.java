@@ -21,6 +21,7 @@ public class _2_BFS_DFS_HasPath {
     public static void createGraph(ArrayList<Edge>[] graph){
         for (int i=0; i<graph.length; i++){
             graph[i] = new ArrayList<>();
+
         }
 
         // This is an un-weighted graph, but we take weight = 1; for standardization
