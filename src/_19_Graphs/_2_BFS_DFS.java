@@ -1,11 +1,10 @@
 package _19_Graphs;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class _2_BFS_BreadthFirstTraversal {
+public class _2_BFS_DFS {
 
     static class Edge{
         int src;
