@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class _2_BFS_DFS {
+public class _2_BFS_DFS_HasPath {
 
     static class Edge{
         int src;
@@ -69,7 +69,7 @@ public class _2_BFS_DFS {
 
     public static void DFS(ArrayList<Edge>[] graph, int curr, boolean[] vis){
         // visit
-        System.out.print(curr + " ");
+        System.out.print(curr + " ");  // Visit the current Node i.e. 0 in this case and print it.
         vis[curr] = true;
 
         for (int i=0; i<graph[curr].size(); i++){     // This returns the size of arrayList in the array
@@ -80,14 +80,36 @@ public class _2_BFS_DFS {
         }
     }
 
+    public static boolean hasPath(ArrayList<Edge>[] graph, int src, int dest, boolean[] vis){
+        if(src== dest){
+            return true;
+        }
+        vis[src] = true;
+        for (int i=0; i<graph[src].size(); i++){
+            Edge e = graph[src].get(i);
+            if(!vis[e.dest] && hasPath(graph, e.dest, dest, vis)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
 
         int V = 7;
         ArrayList<Edge>[] graph = new ArrayList[V];
         createGraph(graph);
-//        BFS(graph);
+
+        System.out.println("BFS");
+        BFS(graph);
+        System.out.println("\n");
 
         boolean[] vis = new boolean[graph.length];
+        System.out.println("DFS");
         DFS(graph, 0, vis);
+        System.out.println();
+
+        boolean[] vis1 = new boolean[graph.length];
+        System.out.println(hasPath(graph, 0, 5, vis1));
     }
 }
