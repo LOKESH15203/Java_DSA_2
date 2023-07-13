@@ -68,6 +68,19 @@ public class _2_BFS_BreadthFirstTraversal {
         }
     }
 
+    public static void DFS(ArrayList<Edge>[] graph, int curr, boolean[] vis){
+        // visit
+        System.out.print(curr + " ");
+        vis[curr] = true;
+
+        for (int i=0; i<graph[curr].size(); i++){     // This returns the size of arrayList in the array
+            Edge e = graph[curr].get(i);
+            if(!vis[e.dest]){
+                DFS(graph, e.dest, vis);       // calls DFS for the next neighbour / First Destination
+            }
+        }
+    }
+
     public static void main(String[] args) {
 
         int V = 7;
@@ -76,6 +89,6 @@ public class _2_BFS_BreadthFirstTraversal {
 //        BFS(graph);
 
         boolean[] vis = new boolean[graph.length];
-
+        DFS(graph, 0, vis);
     }
 }
