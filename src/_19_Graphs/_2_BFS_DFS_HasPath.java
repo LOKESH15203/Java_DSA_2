@@ -21,7 +21,6 @@ public class _2_BFS_DFS_HasPath {
     public static void createGraph(ArrayList<Edge>[] graph){
         for (int i=0; i<graph.length; i++){
             graph[i] = new ArrayList<>();
-
         }
 
         // This is an un-weighted graph, but we take weight = 1; for standardization
@@ -49,9 +48,37 @@ public class _2_BFS_DFS_HasPath {
         graph[6].add(new Edge(6, 5, 1));
     }
 
-    public static void BFS(ArrayList<Edge>[] graph){  // O(V+E) i.e. Vertexes+Edges
-        Queue<Integer> q = new LinkedList<>();
+    //      Standard BFS code
+//    public static void BFS(ArrayList<Edge>[] graph){  // O(V+E) i.e. Vertexes+Edges
+//        Queue<Integer> q = new LinkedList<>();
+//        boolean[] vis = new boolean[graph.length];
+//        q.add(0);                 // source = 0; or Root in Level Oder Traversal
+//
+//        while(!q.isEmpty()){
+//            int curr = q.remove();
+//
+//            if(!vis[curr]){    // if curr is not visited -> visit it now
+//                System.out.print(curr + " ");
+//                vis[curr] = true;       // Now visited
+//                for(int i=0; i<graph[curr].size(); i++){  // Adds all the neighbours of node to the queue
+//                    Edge e = graph[curr].get(i);
+//                    q.add(e.dest);
+//                }
+//            }
+//        }
+//    }
+
+    // This is BFS code if Graph is disconnected
+    public static void bfs(ArrayList<Edge>[] graph){
         boolean[] vis = new boolean[graph.length];
+        for (int i=0; i<graph.length; i++){
+            if(!vis[i]){                       // if false stored in vis i.e. if the element is not visited
+                bfsUtil(graph, vis);           // call bfs util for that node - use for if next node in another component
+            }
+        }
+    }
+    public static void bfsUtil(ArrayList<Edge>[] graph, boolean vis[]){  // O(V+E) i.e. Vertexes+Edges
+        Queue<Integer> q = new LinkedList<>();
         q.add(0);                 // source = 0; or Root in Level Oder Traversal
 
         while(!q.isEmpty()){
@@ -68,7 +95,33 @@ public class _2_BFS_DFS_HasPath {
         }
     }
 
-    public static void DFS(ArrayList<Edge>[] graph, int curr, boolean[] vis){
+
+
+
+            // Standard DFS
+//    public static void DFS(ArrayList<Edge>[] graph, int curr, boolean[] vis){
+//        // visit
+//        System.out.print(curr + " ");  // Visit the current Node i.e. 0 in this case and print it.
+//        vis[curr] = true;
+//
+//        for (int i=0; i<graph[curr].size(); i++){     // This returns the size of arrayList in the array
+//            Edge e = graph[curr].get(i);
+//            if(!vis[e.dest]){
+//                DFS(graph, e.dest, vis);       // calls DFS for the next neighbour / First Destination
+//            }
+//        }
+//    }
+
+    // DSF if Dis-connected graph
+    public static void dfs(ArrayList<Edge>[] graph){
+        boolean vis[] = new boolean[graph.length];
+        for (int i=0; i<graph.length; i++){
+            if(!vis[i]) {
+                dfsUtil(graph, i, vis);
+            }
+        }
+    }
+    public static void dfsUtil(ArrayList<Edge>[] graph, int curr, boolean[] vis){
         // visit
         System.out.print(curr + " ");  // Visit the current Node i.e. 0 in this case and print it.
         vis[curr] = true;
@@ -76,7 +129,7 @@ public class _2_BFS_DFS_HasPath {
         for (int i=0; i<graph[curr].size(); i++){     // This returns the size of arrayList in the array
             Edge e = graph[curr].get(i);
             if(!vis[e.dest]){
-                DFS(graph, e.dest, vis);       // calls DFS for the next neighbour / First Destination
+                dfsUtil(graph, e.dest, vis);       // calls DFS for the next neighbour / First Destination
             }
         }
     }
@@ -103,12 +156,11 @@ public class _2_BFS_DFS_HasPath {
         createGraph(graph);
 
         System.out.println("BFS");
-        BFS(graph);
+        bfs(graph);
         System.out.println("\n");
 
-        boolean[] vis = new boolean[graph.length];
         System.out.println("DFS");
-        DFS(graph, 0, vis);
+        dfs(graph);
         System.out.println();
 
         boolean[] vis1 = new boolean[graph.length];
