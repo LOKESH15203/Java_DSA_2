@@ -1,7 +1,6 @@
 package _19_Graphs;
 
-import java.util.ArrayList;
-import java.util.Stack;
+import java.util.*;
 
 public class _6_TopologicalSorting {
 
@@ -30,7 +29,7 @@ public class _6_TopologicalSorting {
         graph[5].add(new Edge(5, 2));
     }
 
-    // Topological Sort       ---        O(V+E)
+    // Topological Sort       ---        O(V+E)           using DFS
 
     public static void TSort(ArrayList<Edge>[] graph){
         boolean vis[] = new boolean[graph.length];
@@ -61,12 +60,52 @@ public class _6_TopologicalSorting {
         st.push(curr);      // Add them to the stack
     }
 
+//    Topological sorting                         using BFS
+
+    public static void calInDeg(ArrayList<Edge>[] graph, int indeg[]){
+        for(int i=0; i<graph.length; i++){
+            int v = i;
+            for(int j=0; j<graph[v].size(); j++){
+                Edge e = graph[v].get(j);
+                indeg[e.dest]++;
+            }
+        }
+    }
+
+    public static void topSort(ArrayList<Edge>[] graph){
+        int[] indeg = new int[graph.length];
+        calInDeg(graph, indeg);
+        Queue<Integer> q = new LinkedList<>();
+
+        for (int i=0; i<indeg.length; i++){     // As the inDegrees are already found,
+            if(indeg[i] == 0){                  // add the elements whose inDegrees are 0
+                q.add(i);
+            }
+        }
+
+        while (!q.isEmpty()){
+            int curr = q.remove();
+            System.out.print(curr+ " ");        // Printing the Topological sort i.e. the Queue
+
+            for(int i=0; i<graph[curr].size(); i++){
+                Edge e = graph[curr].get(i);
+                indeg[e.dest]--;                 // Reduce the inDegree of the Neighbours of the curr node that is removed.
+                if (indeg[e.dest] == 0){         // Then if the inDegree of the Neighbour is 0 after being reduced,
+                    q.add(e.dest);                     // Add it into the queue
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) {
 
         int V = 6;
         ArrayList<Edge>[] graph = new ArrayList[V];
         createGraph(graph);
 
-        TSort(graph);
+//        TSort(graph);
+        System.out.println();
+        topSort(graph);
+
     }
 }
