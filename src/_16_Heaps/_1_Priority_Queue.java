@@ -25,7 +25,7 @@ public class _1_Priority_Queue {
         pq.add(new Student("Savita",10));
         pq.add(new Student("Pradeep",11));
         pq.add(new Student("Lokesh",1));
-        pq.add(new Student("Gadha",50));
+        pq.add(new Student("Krushna",50));
 
         while(!pq.isEmpty()){
             System.out.println(pq.peek().name + " -> "+ pq.peek().rank);
