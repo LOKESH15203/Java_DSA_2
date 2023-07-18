@@ -56,7 +56,6 @@ public class _2_BFS_DFS_HasPath {
 //
 //        while(!q.isEmpty()){
 //            int curr = q.remove();
-//
 //            if(!vis[curr]){    // if curr is not visited -> visit it now
 //                System.out.print(curr + " ");
 //                vis[curr] = true;       // Now visited

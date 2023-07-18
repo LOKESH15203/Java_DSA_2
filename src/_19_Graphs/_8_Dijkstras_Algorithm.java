@@ -60,6 +60,7 @@ public class _8_Dijkstras_Algorithm {
         PriorityQueue<Pair> pq = new PriorityQueue<>();
         pq.add(new Pair(src, 0));
 
+        // BFS Loop
         while(!pq.isEmpty()){
              Pair curr = pq.remove();
              if(!vis[curr.node]){
