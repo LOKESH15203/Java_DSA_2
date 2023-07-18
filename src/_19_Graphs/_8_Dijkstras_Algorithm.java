@@ -49,7 +49,7 @@ public class _8_Dijkstras_Algorithm {
     }
 
     public static void dijkstra(ArrayList<Edge>[] graph, int src){
-        // 1.  Initialize all distances to be INFINITY
+        // 1.  Initialize all distances to be INFINITY except the start node
         int dist[] = new int[graph.length];
         for(int i=0; i<graph.length; i++){
             if(i != src){
