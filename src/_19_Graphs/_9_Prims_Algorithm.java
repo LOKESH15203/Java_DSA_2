@@ -49,7 +49,7 @@ public class _9_Prims_Algorithm {
         }
     }
 
-    public static void primsMST(ArrayList<Edge>[] graph){
+    public static void primsMST(ArrayList<Edge>[] graph){  // Very simple
         boolean[] vis = new boolean[graph.length];
         PriorityQueue<Ver> pq = new PriorityQueue<>();
         pq.add(new Ver(0, 0));
