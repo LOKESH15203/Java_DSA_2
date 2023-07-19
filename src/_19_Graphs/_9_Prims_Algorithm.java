@@ -54,7 +54,7 @@ public class _9_Prims_Algorithm {
         PriorityQueue<Ver> pq = new PriorityQueue<>();
         pq.add(new Ver(0, 0));
         int finalCost = 0;
-
+        // BFS Loop
         while (!pq.isEmpty()){
             Ver curr = pq.remove();
             if(!vis[curr.v]) {
