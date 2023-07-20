@@ -67,7 +67,7 @@ public class _6_TopologicalSorting {
             int v = i;
             for(int j=0; j<graph[v].size(); j++){
                 Edge e = graph[v].get(j);
-                indeg[e.dest]++;
+                indeg[e.dest]++;                    // if "e" is destination of some node then its inDegree increases.
             }
         }
     }
