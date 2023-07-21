@@ -15,6 +15,33 @@ public class _4_BipartiteGraph {
         }
     }
 
+    public static void createGraph(ArrayList<Edge>[] graph){
+
+        for (int i=0; i<graph.length; i++){
+            graph[i] = new ArrayList<>();
+        }
+
+        // 0 -vertex
+        graph[0].add(new Edge(0, 1));
+        graph[0].add(new Edge(0, 2));
+
+        // 1 -vertex
+        graph[1].add(new Edge(1, 0));
+        graph[1].add(new Edge(1, 3));
+
+        // 2 - vertex
+        graph[2].add(new Edge(2, 0));
+        graph[2].add(new Edge(2, 4));
+
+        // 3 -vertex
+        graph[3].add(new Edge(3, 1));
+//        graph[3].add(new Edge(3, 4));
+
+        // 4 -vertex
+        graph[4].add(new Edge(4, 2));
+//        graph[4].add(new Edge(4, 3));
+    }
+
     public static boolean isBipartite(ArrayList<Edge>[] graph){
         int col[] = new int[graph.length];         // Array to maintain color
         for (int i=0; i<col.length; i++){
@@ -44,33 +71,6 @@ public class _4_BipartiteGraph {
             }
         }
         return true;
-    }
-
-    public static void createGraph(ArrayList<Edge>[] graph){
-
-        for (int i=0; i<graph.length; i++){
-            graph[i] = new ArrayList<>();
-        }
-
-        // 0 -vertex
-        graph[0].add(new Edge(0, 1));
-        graph[0].add(new Edge(0, 2));
-
-        // 1 -vertex
-        graph[1].add(new Edge(1, 0));
-        graph[1].add(new Edge(1, 3));
-
-        // 2 - vertex
-        graph[2].add(new Edge(2, 0));
-        graph[2].add(new Edge(2, 4));
-
-        // 3 -vertex
-        graph[3].add(new Edge(3, 1));
-//        graph[3].add(new Edge(3, 4));
-
-        // 4 -vertex
-        graph[4].add(new Edge(4, 2));
-//        graph[4].add(new Edge(4, 3));
     }
 
     public static void main(String[] args) {
