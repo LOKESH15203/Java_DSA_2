@@ -12,7 +12,7 @@ public class _1_Fibonacci {
 //        return fibonacci(n-1) + fibonacci(n-2);
 //    }
 
-//    Fibonacci Using Dynamic Programming
+//    Fibonacci Using Dynamic Programming   --  ###   MEMOIZATION   ###
 
     public static int fibonacci(int n, int[] dp){
         if(n==0 || n==1){
@@ -26,12 +26,27 @@ public class _1_Fibonacci {
         return fibonacci(n, dp);
     }
 
+//    Fibonacci Using Dynamic Programming   --  ###   TABULATION   ###
+    public static int fibo(int n, int[] dp){
+        dp[0] = 0;
+        dp[1] = 1;
+
+        for (int i=2; i<n+1; i++){
+            dp[i] = dp[i-1] + dp[i-2];
+        }
+        return dp[n];
+    }
+
+
     public static void main(String[] args) {
-    int n = 5;
+    int n = 6;
 
-//    System.out.println(fibonacci(n));
+//    System.out.println(fibonacci(n));  // Without DP
 
-//        int[] dp = new int[n+1];
+//        int[] dp = new int[n+1];                // With Memoization
 //        System.out.println(fibonacci(n, dp));
+
+        int[] dp = new int[n+1];                // With Tabulation
+        System.out.println(fibo(n, dp));
     }
 }
