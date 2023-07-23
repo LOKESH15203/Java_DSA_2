@@ -5,6 +5,15 @@ import java.util.Comparator;
 
 public class _2_Fractional_Knapsack {
 
+    /*
+    What is done here is
+    * 2D array is created to store idx and ratio(value/weight)
+    * Then it is sorted in descending order to bring the high ratio i.e. high value & low weight products
+    * Then if bag has capacity to add the entire new object then add it from the start of the sorted array
+    * If space is less, then add fractional part of the product because it is high value.
+    * */
+
+
     public static void valueSack(int[] value, int[] weight, int maxW){
 
         double ratio[][] = new double[value.length][2];
@@ -20,9 +29,9 @@ public class _2_Fractional_Knapsack {
 
         int capacity = maxW;
         int finalV = 0;
-        for(int i=ratio.length-1; i>=0; i--){
+        for(int i=ratio.length-1; i>=0; i--){       // Above sorting sorts the Array in ascending order. Hence, in order to get the highest valur product first, we need to access the array in opposite direction.
             int idx = (int)ratio[i][0];
-            if (capacity >= weight[idx]) {
+            if (capacity >= weight[idx]) {      // Space available in the Knapsack
                 finalV += value[idx];
                 capacity -= weight[idx];
             } else {

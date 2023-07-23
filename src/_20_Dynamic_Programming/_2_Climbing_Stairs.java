@@ -30,7 +30,17 @@ public class _2_Climbing_Stairs {
         return dp[n];
     }
 
-    //
+    //  TABULATION
+    public static int tabStairs(int n, int[] dp){
+        dp[0] = 1;
+        dp[1] = 1;
+
+        for (int i=2; i<=n; i++){  // we want it till n so <n+1 OR <=n
+            dp[i] = dp[i-1] + dp[i-2];
+        }
+
+        return dp[n];
+    }
 
     public static void main(String[] args) {
 
@@ -38,7 +48,10 @@ public class _2_Climbing_Stairs {
 //        System.out.println(countStairs(n));
 
 
-        System.out.println(memoStairs(n));
+//        System.out.println(memoStairs(n));    // MEMOIZATION
+
+        int[] dp = new int[n+1];
+        System.out.println(tabStairs(n, dp));    // TABULATION
 
     }
 }
