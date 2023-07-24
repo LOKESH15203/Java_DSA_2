@@ -29,26 +29,47 @@ public class _3_01_Knapsack {
 //        System.out.println(fianlVal);
 //    }
 
-    public static int recurKnapsack(int[] wt, int[] val, int maxWt, int n){    // As we are using recursion we need to increment the index when we call for next.......
+//    public static int recurKnapsack(int[] wt, int[] val, int maxWt, int n){    // As we are using recursion we need to increment the index when we call for next.......
+//
+//        // Base case
+//        if(maxWt == 0 || n == 0){
+//            return 0;
+//        }
+//
+//        // Recursion
+//        if(wt[n-1] <= maxWt){      // n-1 gives us the index of the element as -> item 2 is on 1st idx; item 1 is on 0th index
+//            // include
+//            int ans1 = val[n-1] + recurKnapsack(wt, val, maxWt-wt[n-1], n-1);
+//            // exclude
+//            int ans2 = recurKnapsack(wt, val, maxWt, n-1);
+//            return Math.max(ans1, ans2);
+//        }
+//        else
+//            return recurKnapsack(wt, val, maxWt, n-1);
+//
+//    }
 
-        // Base case
-        if(maxWt == 0 || n == 0){
+    // MEMOIZATION      O(n * maxWt)
+    public static int memoKnapsack(int[] wt, int[] val, int maxWt, int n, int[][] dp){
+        if(n==0 || maxWt == 0){
             return 0;
         }
+        if(dp[n][maxWt] != -1){
+            return dp[n][maxWt];
+        }
 
-        // Recursion
         if(wt[n-1] <= maxWt){      // n-1 gives us the index of the element as -> item 2 is on 1st idx; item 1 is on 0th index
             // include
-            int ans1 = val[n-1] + recurKnapsack(wt, val, maxWt-wt[n-1], n-1);
+            int ans1 = val[n-1] + memoKnapsack(wt, val, maxWt-wt[n-1], n-1, dp);
             // exclude
-            int ans2 = recurKnapsack(wt, val, maxWt, n-1);
-            return Math.max(ans1, ans2);
+            int ans2 = memoKnapsack(wt, val, maxWt, n-1, dp);
+            dp[n][maxWt] = Math.max(ans1, ans2);
+            return dp[n][maxWt];
         }
         else
-            return recurKnapsack(wt, val, maxWt, n-1);
+            return memoKnapsack(wt, val, maxWt, n-1, dp);
 
     }
-
 
     public static void main(String[] args) {
 
@@ -56,6 +77,12 @@ public class _3_01_Knapsack {
         int[] val = {15, 14, 10, 45, 30};
         int maxWt = 7;
 
-        System.out.println(recurKnapsack(wt, val, maxWt, wt.length));
+        int[][] dp = new int[val.length+1][maxWt+1];
+        for (int i=0; i<dp.length; i++){
+            for (int j=0; j<dp[0].length; j++){
+                dp[i][j] = -1;
+            }
+        }
+        System.out.println(memoKnapsack(wt, val, maxWt, wt.length, dp));
     }
 }
