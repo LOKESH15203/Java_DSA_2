@@ -71,6 +71,36 @@ public class _3_01_Knapsack {
 
     }
 
+    // TABULATION
+    public static int tabKnapsack(int[] val, int[] wt, int maxWt){
+        int n = val.length;
+        int[][] dp = new int[n+1][maxWt+1];
+
+        for (int i=0; i<n+1; i++){ // initializing the 0th column to 0;
+            dp[i][0] = 0;
+        }
+        for (int j=0; j<maxWt+1; j++){     // initializing the 0th row to zero;
+            dp[0][j] = 0;
+        }
+
+        for (int i=1; i<n+1; i++){
+            for (int j=1; j<maxWt+1; j++){
+                int v = val[i-1];          // i-1 because we added an extra index in the 2D array
+                int w = wt[i-1];
+
+                if(w <= j){      // as maxWt is decreasing we need to write "j"
+                    int incProfit = v + dp[i-1][j-w];   // adds the value of current index and the valur at the index with less values and subtracted weight that must be calculated in previous iterations
+                    int excProfit = dp[i-1][w];     // no value add no decrease in weight
+                    dp[i][j] = Math.max(incProfit, excProfit);
+                }else {
+                    int excProfit = dp[i - 1][w];
+                    dp[i][j] = excProfit;
+                }
+            }
+        }
+        return dp[n][maxWt];
+    }
+
     public static void main(String[] args) {
 
         int[] wt = {2, 5, 1, 3, 4};
@@ -84,5 +114,7 @@ public class _3_01_Knapsack {
             }
         }
         System.out.println(memoKnapsack(wt, val, maxWt, wt.length, dp));
+
+        System.out.println(tabKnapsack(val, wt, maxWt));
     }
 }
