@@ -29,25 +29,25 @@ public class _3_01_Knapsack {
 //        System.out.println(fianlVal);
 //    }
 
-//    public static int recurKnapsack(int[] wt, int[] val, int maxWt, int n){    // As we are using recursion we need to increment the index when we call for next.......
-//
-//        // Base case
-//        if(maxWt == 0 || n == 0){
-//            return 0;
-//        }
-//
-//        // Recursion
-//        if(wt[n-1] <= maxWt){      // n-1 gives us the index of the element as -> item 2 is on 1st idx; item 1 is on 0th index
-//            // include
-//            int ans1 = val[n-1] + recurKnapsack(wt, val, maxWt-wt[n-1], n-1);
-//            // exclude
-//            int ans2 = recurKnapsack(wt, val, maxWt, n-1);
-//            return Math.max(ans1, ans2);
-//        }
-//        else
-//            return recurKnapsack(wt, val, maxWt, n-1);
-//
-//    }
+    public static int recurKnapsack(int[] wt, int[] val, int maxWt, int n){    // As we are using recursion we need to increment the index when we call for next.......
+
+        // Base case
+        if(maxWt == 0 || n == 0){
+            return 0;
+        }
+
+        // Recursion
+        if(wt[n-1] <= maxWt){      // n-1 gives us the index of the element as -> item 2 is on 1st idx; item 1 is on 0th index
+            // include
+            int ans1 = val[n-1] + recurKnapsack(wt, val, maxWt-wt[n-1], n-1);
+            // exclude
+            int ans2 = recurKnapsack(wt, val, maxWt, n-1);
+            return Math.max(ans1, ans2);
+        }
+        else
+            return recurKnapsack(wt, val, maxWt, n-1);
+
+    }
 
     // MEMOIZATION      O(n * maxWt)
     public static int memoKnapsack(int[] wt, int[] val, int maxWt, int n, int[][] dp){
@@ -77,7 +77,7 @@ public class _3_01_Knapsack {
         int[][] dp = new int[n+1][maxWt+1];
 
         for (int i=0; i<n+1; i++){ // initializing the 0th column to 0;
-            dp[i][0] = 0;          // java does initialize the array with 0, but still we did it.
+            dp[i][0] = 0;          // java does initialize the array with 0, but still we did it for understanding
         }
         for (int j=0; j<maxWt+1; j++){     // initializing the 0th row to zero;
             dp[0][j] = 0;
