@@ -77,7 +77,7 @@ public class _3_01_Knapsack {
         int[][] dp = new int[n+1][maxWt+1];
 
         for (int i=0; i<n+1; i++){ // initializing the 0th column to 0;
-            dp[i][0] = 0;
+            dp[i][0] = 0;          // java does initialize the array with 0, but still we did it.
         }
         for (int j=0; j<maxWt+1; j++){     // initializing the 0th row to zero;
             dp[0][j] = 0;
