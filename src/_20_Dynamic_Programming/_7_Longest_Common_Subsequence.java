@@ -41,6 +41,8 @@ public class _7_Longest_Common_Subsequence {
     public static int lcs3(String s1, String s2, int n, int m, int[][] dp){
 
         // initializing first row and column with 0; This is when  n = 0 || m = 0
+        // Already Initialised
+
         for (int i=1; i<n+1; i++){
             for (int j=1; j<m+1; j++){
                 if(s1.charAt(i-1) == s2.charAt(j-1)){
