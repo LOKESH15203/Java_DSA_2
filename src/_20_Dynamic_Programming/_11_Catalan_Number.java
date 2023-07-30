@@ -13,7 +13,21 @@ public class _11_Catalan_Number {
         return ans;
     }
 
+    public static int catMemo(int n, int[] dp){
+        if(n == 0 || n == 1){
+            return 1;
+        }
+        int ans = 0;
+        if (dp[n] != -1){
+            return dp[n];
+        }
 
+        for (int i=0; i<n; i++){
+            ans += catMemo(i, dp) * catMemo(n-i-1, dp);
+        }
+
+        return dp[n] = ans;
+    }
 
     public static void main(String[] args) {
 
@@ -22,7 +36,7 @@ public class _11_Catalan_Number {
         for (int i=0; i<dp.length; i++){
             dp[i] = -1;
         }
-
+        System.out.println(catMemo(n, dp));
 
     }
 }
