@@ -76,8 +76,8 @@ public class _3_01_Knapsack {
         int n = val.length;
         int[][] dp = new int[n+1][maxWt+1];
 
-        for (int i=0; i<n+1; i++){ // initializing the 0th column to 0;
-            dp[i][0] = 0;          // java does initialize the array with 0, but still we did it for understanding
+        for (int i=0; i<n+1; i++){         // initializing the 0th column to 0;
+            dp[i][0] = 0;                  // java does initialize the array with 0, but still we did it for understanding
         }
         for (int j=0; j<maxWt+1; j++){     // initializing the 0th row to zero;
             dp[0][j] = 0;
@@ -89,11 +89,11 @@ public class _3_01_Knapsack {
                 int w = wt[i-1];
 
                 if(w <= j){      // as maxWt is decreasing we need to write "j"
-                    int incProfit = v + dp[i-1][j-w];   // adds the value of current index and the valur at the index with less values and subtracted weight that must be calculated in previous iterations
+                    int incProfit = v + dp[i-1][j-w];   // adds the value of current index and the value at the index with fewer values and subtracted weight that must be calculated in previous iterations
                     int excProfit = dp[i-1][w];     // no value add no decrease in weight
                     dp[i][j] = Math.max(incProfit, excProfit);
                 }else {
-                    int excProfit = dp[i - 1][w];
+                    int excProfit = dp[i - 1][j];
                     dp[i][j] = excProfit;
                 }
             }
