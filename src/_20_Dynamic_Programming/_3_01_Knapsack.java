@@ -90,7 +90,7 @@ public class _3_01_Knapsack {
 
                 if(w <= j){      // as maxWt is decreasing we need to write "j"
                     int incProfit = v + dp[i-1][j-w];   // adds the value of current index and the value at the index with fewer values and subtracted weight that must be calculated in previous iterations
-                    int excProfit = dp[i-1][w];     // no value add no decrease in weight
+                    int excProfit = dp[i-1][j];     // no value add no decrease in weight
                     dp[i][j] = Math.max(incProfit, excProfit);
                 }else {
                     int excProfit = dp[i - 1][j];
