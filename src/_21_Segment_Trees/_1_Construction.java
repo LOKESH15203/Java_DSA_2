@@ -17,10 +17,31 @@ public class _1_Construction {
         }
 
         int mid = (start + end)/2;
-        buildSt(arr, 2*i+1, start, mid);        // left of root is 2i+1
+        buildSt(arr, 2*i+1, start, mid);        // left of root is 2i+1 = index at which the value of root is stored.
         buildSt(arr, 2*i+2, mid+1, end);  // Right of root is 2i+2
         tree[i] = tree[2*i+1] + tree[2*i+2];
         return tree[i];
+    }
+
+    // Queries
+    // GET SUM
+    public static int getSumUtil(int i, int si, int sj, int qi, int qj){
+        if(qj <= si || qi >= sj){       // si-sj is outside qi-qj        // Not overlapping
+            return 0;
+        }
+        else if(si >= qi && sj <= qj){  // si-sj is totally inside qi-qj // Completely Overlapping
+            return tree[i];
+        }
+        else {                          // Not Overlapping
+            int mid = (si+sj)/2;
+            int left = getSumUtil(2*i+1, si, mid, qi, qj);
+            int right = getSumUtil(2*i+2, mid+1, sj, qi, qj);
+            return left+right;
+        }
+    }
+    public static int getSum(int arr[], int qi, int qj){
+        int n = arr.length;
+        return getSumUtil(0, 0, n-1, qi, qj);
     }
 
     public static void main(String[] args) {
@@ -33,5 +54,8 @@ public class _1_Construction {
         for (int i=0; i<tree.length; i++){
             System.out.print(tree[i] + " ");
         }
+
+        System.out.println();
+        System.out.println(getSum(arr, 2, 5));
     }
 }
