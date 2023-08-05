@@ -8,7 +8,7 @@ public class _2_TrapWater_arrays {
         // calculating leftMax bound
         int leftMax[] = new int[n];
         leftMax[0] = heights[0];
-        for(int i = 1; i < n; i++){
+        for(int i = 1; i < n; i++){                           // This stores the left max for index i;
             leftMax[i] = Math.max(heights[i], leftMax[i-1]);
         }
 
