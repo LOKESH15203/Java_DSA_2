@@ -2,28 +2,34 @@ package _1_Arrays;
 
 public class _3_Reverce {
 
-    public static void reverce(int arr[]){
+    public static void reverse(int arr[]){
 
         int first = 0; 
         int last = arr.length-1; 
 
-        while (first<last){
+        while (first < last){
 
             int temp = arr[first];
             arr[first] = arr[last];
             arr[last] = temp;
+            first++;
+            last--;
         }
     }
 
     public static void main(String[] args) {
 
-        _3_Reverce r = new _3_Reverce();
         int arr[] = {2, 3, 4, 5, 6, 7};
 
-        reverce(arr);
+        for (int i=0; i<arr.length; i++){
+            System.out.print(arr[i] + " ");
+        }
 
-        for(int i = 0; i < arr.length; i++){
-            System.out.println(arr[i]+ " ");
+        reverse(arr);
+
+        System.out.println();
+        for (int i=0; i<arr.length; i++){
+            System.out.print(arr[i]+ " ");
         }
         System.out.println();
         
