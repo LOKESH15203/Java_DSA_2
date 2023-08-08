@@ -47,8 +47,8 @@ Given a string s, return true if it is a palindrome, or false otherwise.
 
         while(front < rear) {
             if(string.charAt(front) != string.charAt(rear)){ 
-                // No need to check if equal as then it will be a paldrome
-                // This the conditon for not a palindrome
+                // No need to check if equal as then it will be a palindrome
+                // This the condition for not a palindrome
                 return false;
             }
             front++;
