@@ -2,7 +2,7 @@ package _1_Arrays;
 
 public class _7_Best_TIme_to_Buy_Sell_Stock {
 
-    // Inspired from Trap Rain Water - By me. - Not very optimised
+    // Inspired from Trap Rain Water - By me. - Equally optimised
     public static int maxProfit(int[] prices) {
 
         int n = prices.length;
@@ -42,8 +42,23 @@ public class _7_Best_TIme_to_Buy_Sell_Stock {
     }
 
 
+    public static int maxPro(int[] prices){
+        int leastPri = Integer.MAX_VALUE;
+        int maxProfit = 0;
+
+        for(int i=0; i<prices.length; i++){
+            if (prices[i] < leastPri){
+                leastPri = prices[i];
+            }
+            int profit = prices[i] - leastPri;
+            maxProfit = Math.max(profit, maxProfit);
+        }
+        return maxProfit;
+    }
+
+
     public static void main(String[] args) {
         int[] prices = {7, 1, 5, 3, 6, 4};
-        maxProfit(prices);
+        System.out.println(maxPro(prices));
     }
 }
