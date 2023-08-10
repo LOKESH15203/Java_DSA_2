@@ -21,9 +21,6 @@ public class _2_HEAP {
                  int temp = al.get(x);
                  al.set(x, al.get(par));
                  al.set(par, temp);
-
-                 x = par;
-                 par = (x-1)/2;
              }
          }
 
@@ -79,6 +76,8 @@ public class _2_HEAP {
          h.add(4);
          h.add(1);
          h.add(5);
+
+         h.delete();
 
          while(!h.isEmpty()){
              System.out.println(h.peek());
