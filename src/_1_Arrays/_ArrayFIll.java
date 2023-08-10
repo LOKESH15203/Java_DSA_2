@@ -1,4 +1,4 @@
-package _0_TP;
+package _1_Arrays;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
