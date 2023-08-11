@@ -12,7 +12,7 @@ public class _7_ValidParenthesis {
             if (ch == '(' || ch == '[' || ch == '{') {
                 st.push(str.charAt(i));
             } else {
-                if (st.isEmpty()) {
+                if (st.isEmpty()) {    // This condition is important.
                     return false;
                 }
                 if (ch == ')' && st.peek() == '(') {
@@ -26,15 +26,11 @@ public class _7_ValidParenthesis {
                 }
             }
         }
-        if (st.isEmpty()) {
-            return true;
-        }else {
-            return false;
-        }
+        return st.isEmpty();
     }
 
     public static void main(String[] args) {
-        String str = "({}[]";
+        String str = "({}[])";
         System.out.println(valid(str));
     }
 }
