@@ -27,7 +27,7 @@ You can clearly see that max difference between the characters is between 1st an
         int idx = 0;
 
         while (idx < s1.length() && idx < s2.length()){
-            if(s1.charAt(idx) == s2.charAt(idx)){ // This if the elemets are same.
+            if(s1.charAt(idx) == s2.charAt(idx)){ // This if the elements are same.
                 idx++;
             }
             else{ // if not same - just end it.
