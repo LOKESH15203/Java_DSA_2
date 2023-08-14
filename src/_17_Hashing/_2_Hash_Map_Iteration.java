@@ -17,9 +17,7 @@ public class _2_Hash_Map_Iteration {
         hm.put("Noida", 140);
         hm.put("Ahmedabad", 230);
 
-        Set<String> keys = hm.keySet();
-
-        for (String k: keys) {             // FOREACH loop
+        for (String k: hm.keySet()) {             // FOREACH loop
             System.out.println("key = "+ k+ ", values = " + hm.get(k));
         }
     }
