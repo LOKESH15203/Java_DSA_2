@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class _7_Duplicate_Char_Frequency {
+    // Return and what frequency have the characters repeated in a String.
 
     public static void dcf(String s){
         HashMap<Character, Integer> hm = new HashMap<>();
