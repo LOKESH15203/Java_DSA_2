@@ -14,7 +14,7 @@ Given a string s, return true if it is a palindrome, or false otherwise.
         if (s.isEmpty()){
             return true;
         }
-        s = s.toLowerCase().replaceAll("[^a-zA-Z0-9]", "");
+        s = s.toLowerCase().replaceAll("[^a-zA-Z0-9]", "");  // Except(^) a-zA-Z0-9 replace else with "".
 
         int start = 0;
         int end = s.length()-1;
