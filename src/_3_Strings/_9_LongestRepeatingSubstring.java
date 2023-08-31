@@ -10,8 +10,8 @@ Return the length of the longest substring containing the same letter you can ge
     public static int characterReplacement(String s, int k) {
         // This is done using the sliding window approach
         // WE are not replacing the elements.
-        // Just playing along with the higest posiblity.
-        // Can we or Can Not replace the No. of elements in the string to make the longest substring.
+        // Just playing along with the highest possibility.
+        // Can we or Can Not replace the No. of elements in the string to make the longest substring?
         int left = 0, maxLen = 0, longestSeq = 0;
         int[] arr = new int[26];
         for (int right =0; right<s.length(); right++){
