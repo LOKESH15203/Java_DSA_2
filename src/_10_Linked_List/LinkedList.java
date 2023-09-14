@@ -1,5 +1,7 @@
 package _10_Linked_List;
 
+import java.util.HashSet;
+
 public class LinkedList {
 
 
@@ -396,6 +398,7 @@ public class LinkedList {
 //        ll.addMiddle(2, 4);
         System.out.println(ll.size);
 
+        HashSet<Integer> hs= new HashSet<>();
         ll.printll();
         System.out.println();
 //        ll.iteSearch(4);
