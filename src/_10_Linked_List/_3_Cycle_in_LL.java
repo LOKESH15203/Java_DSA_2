@@ -28,7 +28,19 @@ public class _3_Cycle_in_LL {
         return false;
     }
 
+    public static boolean hasCyclePointer(Node head){
+        Node fPointer = head;
+        Node sPointer = head;
 
+        while(fPointer != null && sPointer != null){
+            sPointer = sPointer.next;
+            fPointer = fPointer.next.next;
+            if(sPointer == fPointer){
+                return true;
+            }
+        }
+        return false;
+    }
 
     public static void main(String[] args) {
 
@@ -50,7 +62,7 @@ public class _3_Cycle_in_LL {
 
         // Now, the linked list has a cycle
 
-        System.out.println(hasCycleSet(head));
+        System.out.println(hasCyclePointer(head));
 
     }
 }
