@@ -2,8 +2,7 @@ package _10_Linked_List;
 
 import java.util.HashSet;
 
-public class LinkedList {
-
+public class LinkedListLocal {
 
     public static class Node{
         int data;
@@ -383,8 +382,8 @@ public class LinkedList {
     // #####################################################################################
     public static void main(String[] args) {
 
-        LinkedList ll = new LinkedList();
-        LinkedList ll2 = new LinkedList();
+        LinkedListLocal ll = new LinkedListLocal();
+        LinkedListLocal ll2 = new LinkedListLocal();
 
         ll.addFirst(1);
         ll.addFirst(2);
